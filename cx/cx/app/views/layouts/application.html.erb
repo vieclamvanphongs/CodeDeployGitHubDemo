@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+ 
+<%= favicon_link_tag 'favicon.ico'%>
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+    <%= csrf_meta_tags %>
+ <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <meta name="google-site-verification" content="tkr0UboCbqozyJRwIK1Tn3Cy1lxJEtBZUbELm08ZM7I" />
+  
+   <meta name="language" content="english, en, Vietnamese,vn"
+ 
+   <meta name='description'
+      content='<%= yield(:description) %>' />
+<meta name='keywords'
+      content='<%= yield(:keywords) %>' />
+  
+   
+  
+  
+	
+	
+	
+	  <title><%= yield(:title) %></title>
+	
+
+	
+	
+		
+   
+  
+  </head>
+  
+ <body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<nav class="navbar navbar-light" style="background-color: #33FF66;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href='C:/Sites/cv/app/assets/images/logo.jpg'></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="http://vieclamvanphong.com">Home</a></li>
+		 <%if !nhatuyendung_session&&!nguoitimviec_session%>
+		 <li><a href="http://vieclamvanphong.com/nguoitimviecs/sign_up">Đăng ký Người tìm việc</a></li>
+        <li><a href="http://vieclamvanphong.com/nhatuyendungs/sign_up">Đăng ký Nhà tuyển dụng </a></li>
+        <%end%> 
+		 <%if nhatuyendung_session%>
+		 <li><a href="http://vieclamvanphong.com/vieclams/new">Tạo Việc làm mới </a></li>
+		 <%end%> 
+		 <%if nhatuyendung_session%>
+		<li><a href="http://vieclamvanphong.com/home/quan-ly-viec-lam">Quản lý Việc làm </a></li>
+		
+		 <%end%> 
+		  <%if !nhatuyendung_session&&!nguoitimviec_session%>
+		 <li><a href="http://vieclamvanphong.com/nguoitimviecs/sign_in">Đăng nhập Người tìm việc</a></li>
+		
+        <li><a href="http://vieclamvanphong.com/nhatuyendungs/sign_in">Đăng nhập Nhà tuyển dụng </a></li>
+		  <%end%>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+         <li class="active">
+		 <%if nhatuyendung_session%>
+		 <%= link_to('Đăng xuất', destroy_nhatuyendung_session_path, :method => :delete) %> 
+		 <%end%> </li>
+	 	 <%if nguoitimviec_session%> <li class="active">
+		 <li> <%= link_to('Quản lý Tài khoản', edit_nguoitimviec_registration_path, :method => :get) %>  </li>
+		<li>  <%= link_to('Đăng xuất', destroy_nguoitimviec_session_path, :method => :delete) %>   </li>
+		 <%end%>
+		 
+		 </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">   
+ 
+ 
+ 
+  <div class="row content">
+
+       <div class="col-sm-2 sidenav">
+      <div class="">
+        <%=image_tag('logo2.jpg', size: "150x500")%>
+      </div>
+      <div class="">
+        <p></p>
+      </div>
+    </div>
+	
+    <div class="col-sm-8 text-left "> 
+	
+<div class="col-md-12 text-center">
+<div class="form-group">
+	<%= form_tag(vieclams_path, method: :get, class: 'form-inline') do %>
+ <%= text_field_tag :tencv, params[:tencv],:class => "form-control" %>
+<%= select_tag "nghanhnghe", options_for_select([ "Tất cả nghành nghề","An toàn PCCC","Bảo hiểm","Bán hàng","Báo chí","Bảo vệ","Bất động sản","Biên phiên dịch","Chứng khoán","Cơ khí","Công nghệ cao","Công nghệ sinh học","Chăm sóc sức khỏe", "Chứng khoán","Dầu khí","Dệt may","Da giày","Dược Phẩm","Dịch vụ khách hàng","Dự án","Du lịch","Điện-Điện tử","Đào tạo-Giáo dục", "Đầu tư","Điều hành-Quản lý","Giao nhận","Hành chính","Hóa học-Hóa sinh","Hàng không","Internet Online Media", "IT-Phần mềm","IT-Phần cứng-Mạng","Khách sạn","Kho vận","Kiến trúc","Kinh doanh","Kế toán","Kiểm toán","Luật sư","Lao động phổ thông","Lâm nghiệp","Lái xe","Marketing","Môi trường","Mỹ thuật", "Ngân hàng","Nông nghiệp","Nhân sự","Ô tô","Quảng cáo","QA-QC","Sản Xuất Vật Tư","Thiết kế","Tư vấn","Thư ký","Tài chính","Truyền thông","Tạp vụ","Viễn Thông","Vận chuyển"," Xây dựng","Xuất nhập khẩu","Y tế","Khác" ], params[:nghanhnghe]),:class => "form-control" %>
+<%= select_tag "diadiem", options_for_select(["Tất cả địa điểm", "Hà Nội", "TP Hồ Chí Minh","Đà Nẵng","Cần Thơ","Hải Phòng","Bình Dương","An Giang","Bà Rịa-Vũng Tàu","Bắc Giang","Bắc Kạn","Bắc Ninh","Bạc Liêu","Bến Tre","Bình Định","Bình Phước","Bình Thuận","Cà Mau","Cao Bằng","Đắk Lắk","Đắk Nông","Điện Biên","Đồng Nai","Đồng Tháp","Gia Lai","Hà Giang","Hà Nam","Hà Tĩnh","Hải Dương","Hậu Giang","Hòa Bình","Hưng Yên","Khánh Hòa","Kiên Giang","Kon Tum","Lai Châu","Lâm Đồng","Lạng Sơn","Lào Cai","Long An","Nam Định","Nghệ An","Ninh Bình","Ninh Thuận","Phú Thọ","Quảng Bình","Quảng Nam","Quảng Ngãi","Quảng Ninh","Quảng Trị","Sóc Trăng","Sơn La","Tây Ninh","Thái Bình","Thái Nguyên","Thanh Hóa","Thừa Thiên Huế","Tiền Giang","Trà Vinh","Tuyên Quang","Vĩnh Long","Vĩnh Phúc","Yên Bái","Phú Yên"], params[:diadiem]) ,:class => "form-control"%>
+    
+	<%= submit_tag 'Tìm Kiếm', name: nil %>
+<% end %>
+	</div>
+	</div>
+	<div class="col-md-12 text-center">
+<div class="form-group">
+ <%= render 'layouts/messages' %>
+</div>
+	</div>
+	
+	<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+	
+	 
+      <%= yield %>
+	  <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+    </div>
+    <div class="col-sm-2 sidenav">
+      <div class="">
+        <%=image_tag('logo.jpg', size: "150x500")%>
+      </div>
+      <div class="">
+        <p></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="panel-footer fixed-bottom text-center">
+ <b>Copyright © Võ Nhật Đức</br>
+Trang Web thông tin tìm kiếm việc làm, tuyển dụng lớn nhất Việt Nam</br>
+Email liên hệ: ducnhatvo@gmail.com</br>
+SĐT liên hệ: 091 548 1307</b></br>
+</footer>
+
+</body>
+</html>
+
+
+
+
+
+  

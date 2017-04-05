@@ -1,0 +1,27 @@
+<%= form_for(thumail) do |f| %>
+  <% if thumail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(thumail.errors.count, "error") %> prohibited this thumail from being saved:</h2>
+
+      <ul>
+      <% thumail.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.file_field  :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

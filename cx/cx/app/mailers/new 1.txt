@@ -1,0 +1,1 @@
+attachments['cv-xin-viec-it.doc'] = File.read("C:/Sites/cv/public"+@thumail.name_url, mode: "rb")

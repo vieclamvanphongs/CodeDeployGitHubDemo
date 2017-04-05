@@ -1,0 +1,47 @@
+<head>
+ 
+  
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <meta name="google-site-verification" content="tkr0UboCbqozyJRwIK1Tn3Cy1lxJEtBZUbELm08ZM7I" />
+   <meta name='keyword' content='Tìm việc làm trên mạng online'>
+   <meta name="language" content="english, en, Vietnamese,vn"
+ 
+  
+    
+	
+	
+	
+	
+	
+
+	
+	
+		
+   
+  
+  </head>
+
+<%= form_for :vieclam, url: 'http://vieclamvanphong.com/vieclams/'+vieclam.id.to_s+'/update2', method: "put" do |f| %>
+ 
+  <div class="field">
+    <%= f.label "Vui  lòng chọn File trong máy vi tính của bạn " %> <i>(Lưu ý chỉ được đính kèm các loại tệp sau: .doc, .docx, .rar, .zip, .pdf, .xls, .xlsx)</i>
+    <%= f.file_field :nophoso %>
+	  </div></br>
+	
+	  <%if !vieclam.daungtuyen%>
+	  <% vieclam.daungtuyen='/0/'%>
+	  	  <%end%>
+		  
+	  <%= f.hidden_field(:daungtuyen, :value =>'/'+ (@vieclam.daungtuyen)+(@nguoitimviec.id.to_s)+'/' )%>
+ <%if vieclam.daungtuyen.include? ('/'+(@nguoitimviec.id.to_s)+'/')%>
+ <p>Bạn đã ứng tuyển cho công việc này rồi </p>
+ <%else%>
+ 
+ <div class="actions">
+ <i>Chú ý: Mỗi công việc bạn chỉ có thể ứng tuyển 1 lần duy nhất</br></i>
+    <%= f.submit 'Nộp CV' %>
+  </div>
+ 
+<%end%>
+   
+<% end %>

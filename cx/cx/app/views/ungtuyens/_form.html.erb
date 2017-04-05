@@ -1,0 +1,22 @@
+<%= form_for(ungtuyen) do |f| %>
+  <% if ungtuyen.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ungtuyen.errors.count, "error") %> prohibited this ungtuyen from being saved:</h2>
+
+      <ul>
+      <% ungtuyen.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :hoso %>
+    <%= f.file_field :hoso %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

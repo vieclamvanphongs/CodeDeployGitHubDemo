@@ -1,0 +1,21 @@
+<% content_for :title, @vieclam.congty %>
+<% content_for :description, @vieclam.congty %>
+<% content_for :keywords, @vieclam.congty %>
+<style>
+   hr {
+       border-top: 1px dotted #000000 !important;
+       margin-bottom:5px !important; 
+       margin-top:5px !important;
+   }
+</style>
+<h2>
+<%=@vieclam.congty%></h2>
+<b>Mô tả: </b></br>
+<%=simple_format(@vieclam.motacongty)%>
+<b>Website: </b>
+<%if @vieclam.trangweb==''%>
+Chưa cập nhật
+<%else%>
+<%=@vieclam.trangweb%></br>
+<%end%>
+<hr>

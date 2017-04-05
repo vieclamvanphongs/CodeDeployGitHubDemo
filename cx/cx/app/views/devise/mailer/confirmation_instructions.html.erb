@@ -1,0 +1,5 @@
+<p>Chào mừng Quý khách!</p>
+<p>Cảm ơn Quý khách đã sử dụng dịch vụ tìm kiếm, tuyển dụng  việc làm của chúng tôi!</p>
+<p>Vui lòng xác thực email đăng ký của bạn với chúng tôi bằng cách click vào liên kết dưới đây:</p>
+
+<p><%= link_to 'Nhấn vào đây để Xác thực Email', confirmation_url(@resource, confirmation_token: @token) %></p>

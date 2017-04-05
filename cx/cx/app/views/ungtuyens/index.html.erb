@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ungtuyens</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hoso</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ungtuyens.each do |ungtuyen| %>
+      <tr>
+        <td><%= ungtuyen.hoso %></td>
+        <td><%= link_to 'Show', ungtuyen %></td>
+        <td><%= link_to 'Edit', edit_ungtuyen_path(ungtuyen) %></td>
+        <td><%= link_to 'Destroy', ungtuyen, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ungtuyen', new_ungtuyen_path %>

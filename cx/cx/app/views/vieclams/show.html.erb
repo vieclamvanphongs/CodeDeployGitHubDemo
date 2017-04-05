@@ -1,0 +1,105 @@
+<% content_for :title, @vieclam.tencv%>
+
+
+<% content_for :description, @vieclam.tencv %>
+<% content_for :keywords, @vieclam.tencv %>
+<p id="notice"><%= notice %></p>
+
+<p>
+ <h2>
+  <%= @vieclam.tencv %></br></h2>
+</p>
+
+<p>
+<%if @vieclam.idnhatuyendung=='1'%>
+<b>Tên công ty:</b> <%=link_to @vieclam.congty, 'http://vieclamvanphong.com/home/'+@vieclam.id.to_s+'/'+@vieclam.tencongtyurl.to_s,target: :_blank%>  
+<%else%>
+<b>Tên công ty:</b><%=link_to @vieclam.congty, 'http://vieclamvanphong.com/thong-tin-nha-tuyen-dung/'+@vieclam.idnhatuyendung.to_s+'/'+@vieclam.tencongtyurl.to_s,target: :_blank%>
+   </p> 
+  <% end %>
+
+<p>
+  <strong>Nghành nghề:</strong>
+  <%= link_to @vieclam.nghanhnghe, 'http://vieclamvanphong.com/tim-viec-lam/'+@vieclam.nghanhngheurl ,target: :_blank%></br>
+</p>
+
+<p>
+  <strong>Chức vụ:</strong>
+  <%= @vieclam.vitri %></br>
+</p>
+
+
+  <strong>Chi tiết công việc:</strong>
+  <%= simple_format(@vieclam.mota, {}, wrapper_tag: "div")%>
+<p>
+  <strong>Yêu cầu:</strong>
+  <%=  simple_format(@vieclam.yeucau, {}, wrapper_tag: "div") %>
+</p>
+
+<p>
+  <strong>Mức lương:</strong></br>
+  <%= @vieclam.mucluong %>
+</p>
+
+<p>
+  <strong>Quyền lợi:</strong>
+  <%= simple_format(@vieclam.quyenloi, {}, wrapper_tag: "div") %>
+</p>
+
+<p>
+  <strong>Địa điểm:</strong>
+  <%= link_to @vieclam.diadiem, 'http://vieclamvanphong.com/viec-lam/'+@vieclam.diadiemurl ,target: :_blank%></br>
+</p>
+
+<p>
+  <strong>Ngày đăng tuyển:</strong>
+  <%= @vieclam.ngaydangtuyen.strftime("%d/%m%Y") %></br>
+</p>
+
+<p>
+  <strong>Ngày hết hạn:</strong>
+  <%= @vieclam.ngayhethan.strftime("%d/%m/%Y") %></br>
+
+
+<% if (nhatuyendung_session==@vieclam.idnhatuyendung) %>
+<%= link_to 'Edit', edit_vieclam_path(@vieclam) %> |
+<%= link_to 'Back', 'http://vieclamvanphong.com/vieclams' %>
+<%end%>
+<% if nhatuyendung_session %>
+<%if @nhatuyendung.id==1 %>
+<%= link_to 'Edit', edit_vieclam_path(@vieclam) %> |
+<%= link_to 'Back', 'http://vieclamvanphong.com/vieclams' %>
+<%end%>
+<%end%>
+<% if nguoitimviec_session %>
+  <%if !@vieclam.daungtuyen%>
+	  <% @vieclam.daungtuyen='/0/'%>
+	  	  <%end%>
+ <%if @vieclam.daungtuyen.include? ('/'+(@nguoitimviec.id.to_s)+'/')%>
+ <p>Bạn đã ứng tuyển cho công việc này rồi </p>
+ <%else%>
+ 
+ <%= link_to 'Ứng tuyển','http://vieclamvanphong.com/viec-lam/'+@vieclam.diadiemurl.to_s+'/'+@vieclam.slug.to_s+'/ung-tuyen' %> 
+ <%end%>
+  <%else%>
+  <% if !nhatuyendung_session %>
+   <%= link_to 'Ứng tuyển', 'http://vieclamvanphong.com/viec-lam/'+@vieclam.diadiemurl.to_s+'/'+@vieclam.slug.to_s+'/ung-tuyen' %> 
+   <%end%>
+<%end%>
+</br>
+</br>
+<% if nhatuyendung_session %>
+<%if ((@nhatuyendung.id).to_s==(@vieclam.idnhatuyendung)) %>
+<% if !@vieclam.kichhoat %>
+	<u>Thông báo!</u> </br>
+	Công việc của bạn đã đăng tuyển thành công</br>
+   Công việc này của bạn hiện chỉ có thể đăng tuyển được 20 ngày. </br>
+   Để được đăng tuyển không giới hạn thời gian vui lòng thanh toán cho chúng tôi.</br>
+   Quý khách vui lòng chuyển số tiền: <b>100.000 đ </b>vào số tài khoản:<b> 423 020 5 020 554, Ngân hàng: AgriBank Nông Sơn - Quảng Nam,Tên TK: Võ Nhật Đức</b>.</br> 
+   Nội dung khi chuyển khoản quý khách vui lòng điền <i>tên của công việc</i> hoặc quý khách có thể gửi mail:<i> chứng từ hoặc mã giao dịch hoặc ảnh chụp lúc chuyển tiền</i> vào email:<b> vonhatduc@vieclamvanphong.com</b>  hoặc  <b>vieclamvanphongs@gmail.com</b></br>
+   Chúng tôi sẽ kích hoạt việc làm không giới hạn thời gian cho quý khách và thông báo này sẽ không xuất hiện nữa.</br> 
+   Trân trọng!</br>
+  <i> (Xin lưu ý là khi quý khách đăng xuất hoặc người tìm việc tìm kiếm việc làm thì sẽ <b>không</b> nhìn thấy thông báo này)</i>
+   <%end%>
+ <%end%>
+ <%end%>

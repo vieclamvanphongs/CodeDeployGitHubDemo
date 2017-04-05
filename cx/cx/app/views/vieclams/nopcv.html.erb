@@ -1,0 +1,19 @@
+
+<% content_for :title, "nộp hồ sơ"%>
+
+
+<% content_for :description, "nộp hồ sơ" %>
+<% content_for :keywords, "nộp hồ sơ"%>
+<%= form_for(@vieclam) do |f| %>
+  
+ 
+
+  <div class="field">
+    <%= f.label :nophoso %>
+    <%= f.file_field :nophoso %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

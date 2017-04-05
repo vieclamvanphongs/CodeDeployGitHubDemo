@@ -1,0 +1,32 @@
+<% content_for :title, "Danh sách công việc của bạn" %>
+<% content_for :description, "Danh sách công việc"  %>
+<% content_for :keywords, "Danh sách công việc"  %>
+
+<style>
+   hr {
+       border-top: 1px dotted #000000 !important;
+       margin-bottom:5px !important; 
+       margin-top:5px !important;
+   }
+</style>
+
+	
+
+
+ <b>Danh sách công việc của bạn </b></br>
+    <% @vieclams.each do |vieclam| %>
+     
+    
+    
+	<%if nhatuyendung_session%>
+           <%= link_to vieclam.tencv, vieclam %>
+      <%= link_to 'Chỉnh sửa', edit_vieclam_path(vieclam),style: 'color:#FF6600;' %>
+      <%= link_to 'Xóa', 'http://vieclamvanphong.com/vieclams/'+vieclam.id.to_s,style: 'color:#FF6600;', method: :delete, data: { confirm: 'Are you sure?' } %><br>
+     
+	 
+    <% end %>
+	<hr>
+	  <% end %>
+ <%= link_to 'Đăng tuyển công việc mới', new_vieclam_path,style: 'color:#FF6600;' %>
+
+

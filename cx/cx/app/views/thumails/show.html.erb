@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @thumail.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @thumail.email %>
+</p>
+
+<%= link_to 'Edit', edit_thumail_path(@thumail) %> |
+<%= link_to 'Back', thumails_path %>

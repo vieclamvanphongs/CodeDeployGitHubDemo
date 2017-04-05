@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Thumails</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @thumails.each do |thumail| %>
+      <tr>
+        <td><%= thumail.name %></td>
+        <td><%= thumail.email %></td>
+        <td><%= link_to 'Show', thumail %></td>
+        <td><%= link_to 'Edit', edit_thumail_path(thumail) %></td>
+        <td><%= link_to 'Destroy', thumail, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Thumail', new_thumail_path %>

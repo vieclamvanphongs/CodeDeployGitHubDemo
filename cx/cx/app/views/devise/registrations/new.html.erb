@@ -1,0 +1,64 @@
+<% content_for :title, "Đăng ký Nhà Tuyển dụng"%>
+
+
+
+<% content_for :description, "Đăng ký Nhà Tuyển dụng"%>
+<% content_for :keywords,"Đăng ký Nhà Tuyển dụng"%>
+ 
+ <% if current_page?(new_nhatuyendung_registration_path) %>
+ 
+   <h3>Đăng ký Nhà Tuyển dụng</h3>
+   <%else%>
+   <title>Đăng ký Người Tìm việc</title>
+   <h3>Đăng ký Người Tìm việc </h3>
+    <% end %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label "Email đăng nhập" %><br />
+    <%= f.email_field :email, autofocus: true,:size => "40" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Mật khẩu" %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off",:size => "40" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Xác nhận mật khẩu" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off",:size => "40" %>
+  </div>
+
+   <% url = request.path_info %>
+   <%if url.include?('nhatuyendungs') %>
+  <div class="field">
+    <%= f.label 'Tên công ty' %><br />
+    <%= f.text_field :tencongty,:size => "40" %>
+  </div>
+ <div class="field">
+    <%= f.label 'Mô tả công ty' %><br />
+    <%= f.text_area :motacongty, cols: 60, rows: 10 %>
+  </div>
+<div class="field">
+    <%= f.label 'Trụ sở' %><br />
+    <%= f.text_field :diadiem,:size => "40" %>
+  </div>
+<div class="field">
+    <%= f.label 'Trang Web' %><br />
+    <%= f.text_field :trangweb,:size => "40" %>
+  </div>
+ <% end %>
+
+  
+  
+  <div class="actions">
+    <%= f.submit "Đăng ký" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

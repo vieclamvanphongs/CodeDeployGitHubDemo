@@ -1,0 +1,12 @@
+<% content_for :title,"Chỉnh sửa Việc làm" %>
+
+
+<% content_for :description, "Chỉnh sửa Việc làm" %>
+<% content_for :keywords, "Chỉnh sửa Việc làm" %>
+
+<h1>Chỉnh sửa Việc làm</h1>
+
+<%= render 'form', vieclam: @vieclam %>
+
+<%= link_to 'Show', @vieclam %> |
+<%= link_to 'Back', vieclams_path %>

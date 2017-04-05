@@ -1,0 +1,37 @@
+
+
+
+<% content_for :description, "Danh sách công việc của bạn"%>
+<% content_for :keywords, "Danh sách công việc của bạn" %>
+<% content_for :title, "Danh sách công việc của bạn" %>
+
+
+	
+
+
+ 
+    <% @vieclams.each do |vieclam| %>
+     <b>Danh sách công việc của bạn </b></br>
+     <%= vieclam.tencv %><br>
+     <%= vieclam.congty %><br>
+     <%= vieclam.nghanhnghe %><br>
+     <%= vieclam.vitri %><br>
+     <%= simple_format(vieclam.mota, {}, wrapper_tag: "div") %>
+     <%= simple_format(vieclam.yeucau, {}, wrapper_tag: "div") %>
+     <%= vieclam.mucluong %><br>
+     <%= simple_format(vieclam.quyenloi, {}, wrapper_tag: "div") %>
+     <%= vieclam.diadiem %><br>
+     <%= vieclam.ngaydangtuyen %><br>
+    <%= vieclam.ngayhethan %><br>
+	<%if nhatuyendung_session%>
+           <%= link_to 'Show', vieclam %>
+      <%= link_to 'Edit', edit_vieclam_path(vieclam) %>
+      <%= link_to 'Destroy', vieclam, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <br>
+	  <%= link_to 'New Vieclam', new_vieclam_path %>
+    <% end %>
+	<%= link_to 'Ứng tuyển', 'http://vieclamvanphong.com/vieclams/'+vieclam.id.to_s+'/edit2' %> 
+	  <% end %>
+<br>
+
+

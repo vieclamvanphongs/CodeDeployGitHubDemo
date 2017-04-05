@@ -1,0 +1,17 @@
+<% content_for :title, @nhatuyendung.tencongty %>
+
+
+
+<% content_for :description, @nhatuyendung.tencongty %>
+<% content_for :keywords, @nhatuyendung.tencongty%>
+<h2>
+<%= @nhatuyendung.tencongty%></h2>
+
+<b>Thông tin chi tiết: </b></br>
+<%= simple_format(@nhatuyendung.motacongty)%>
+<b>Trụ sở: </b>
+<%= @nhatuyendung.diadiem%></br>
+<b>Quy mô: </b>
+<%= @nhatuyendung.quymo%></br>
+<b>Website:</b>
+<%= @nhatuyendung.trangweb%></br>

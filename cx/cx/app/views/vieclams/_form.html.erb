@@ -1,0 +1,117 @@
+
+
+
+<%= form_for(vieclam) do |f| %>
+  <% if vieclam.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(vieclam.errors.count, "error") %> prohibited this vieclam from being saved:</h2>
+
+      <ul>
+      <% vieclam.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  
+ <div class="field">
+    <%= f.label "Tên công việc" %><br />
+    <%= f.text_field  :tencv, :size => "70" %>
+	
+	
+  
+	
+	
+  </div>
+  <div class="field">
+    <%= f.label "Tên công ty" %><br />
+    <%= f.text_field  :congty, escape:  false,:size => "70" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Nghành nghề" %><br />
+   <%= f.select :nghanhnghe, options_for_select([@vieclam.nghanhnghe, "Tất cả nghành nghề","An toàn PCCC","Bảo hiểm","Bán hàng","Báo chí","Bảo vệ","Bất động sản","Biên phiên dịch","Chứng khoán","Cơ khí","Công nghệ cao","Công nghệ sinh học","Chăm sóc sức khỏe", "Chứng khoán","Dầu khí","Dệt may","Da giày","Dược Phẩm","Dịch vụ khách hàng","Dự án","Du lịch","Điện-Điện tử","Đào tạo-Giáo dục", "Đầu tư","Điều hành-Quản lý","Giao nhận","Hành chính","Hóa học-Hóa sinh","Hàng không","Internet Online Media", "IT-Phần mềm","IT-Phần cứng-Mạng","Khách sạn","Kho vận","Kiến trúc","Kinh doanh","Kế toán","Kiểm toán","Luật sư","Lao động phổ thông","Lâm nghiệp","Lái xe","Marketing","Môi trường","Mỹ thuật", "Ngân hàng","Nông nghiệp","Nhân sự","Ô tô","Quảng cáo","QA-QC","Sản Xuất Vật Tư","Thiết kế","Tư vấn","Thư ký","Tài chính","Truyền thông","Tạp vụ","Viễn Thông","Vận chuyển"," Xây dựng","Xuất nhập khẩu","Y tế","Khác"]) %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Chức vụ" %><br />
+    <%= f.text_field :vitri,:size => "70" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Chi tiết công việc" %><br />
+    <%= f.text_area :mota, cols: 72, rows: 8 %>
+
+  </div>
+
+  <div class="field">
+    <%= f.label "Yêu cầu" %><br />
+    <%= f.text_area :yeucau, cols: 72, rows: 8  %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Mức lương" %><br />
+    <%= f.text_field :mucluong,:size => "70" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Quyền lợi" %><br />
+    <%= f.text_area :quyenloi, cols: 72, rows: 4 %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Địa điểm làm việc" %><br />
+   <%= f.select :diadiem, options_for_select([@vieclam.diadiem,"Tất cả địa điểm", "Hà Nội", "TP Hồ Chí Minh","Đà Nẵng","Cần Thơ","Hải Phòng","Bình Dương","An Giang","Bà Rịa-Vũng Tàu","Bắc Giang","Bắc Kạn","Bắc Ninh","Bạc Liêu","Bến Tre","Bình Định","Bình Phước","Bình Thuận","Cà Mau","Cao Bằng","Đắk Lắk","Đắk Nông","Điện Biên","Đồng Nai","Đồng Tháp","Gia Lai","Hà Giang","Hà Nam","Hà Tĩnh","Hải Dương","Hậu Giang","Hòa Bình","Hưng Yên","Khánh Hòa","Kiên Giang","Kon Tum","Lai Châu","Lâm Đồng","Lạng Sơn","Lào Cai","Long An","Nam Định","Nghệ An","Ninh Bình","Ninh Thuận","Phú Thọ","Quảng Bình","Quảng Nam","Quảng Ngãi","Quảng Ninh","Quảng Trị","Sóc Trăng","Sơn La","Tây Ninh","Thái Bình","Thái Nguyên","Thanh Hóa","Thừa Thiên Huế","Tiền Giang","Trà Vinh","Tuyên Quang","Vĩnh Long","Vĩnh Phúc","Yên Bái","Phú Yên"], :diadiem) %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Ngày đăng tuyển" %><br />
+    <%= f.date_select :ngaydangtuyen ,  order: [:day, :month, :year] %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Ngày hết hạn" %><br />
+    <%= f.date_select :ngayhethan ,  order: [:day, :month, :year]%>
+  </div>
+<div class="field">
+<% if nhatuyendung_session %>
+   <%if @nhatuyendung.id!=1 %>
+      <%= f.text_field :idnhatuyendung, :value =>(@nhatuyendung.id) %>
+	  <%else%>
+	   <%= f.text_field :idnhatuyendung %>
+	  <% end %>
+	   <% end %>
+  </div>
+  <div class="field">
+    <%= f.label "Email khi nhận CV ứng tuyển từ ứng viên" %><br />
+	
+	<% if nhatuyendung_session %>
+	<%if @nhatuyendung.id==1 %>
+	<%= f.text_field :email, cols: 72, rows: 4 %>
+	<%else%>
+    <%= f.text_field(:email, :value =>(@nhatuyendung.email),:size => "70") %>
+	<% end %>
+	<% end %>
+  </div>
+ <% if nhatuyendung_session %>
+ <%if @nhatuyendung.id==1 %>
+ <div class="field">
+    <%= f.label :kichhoat %><br />
+    <%= f.text_area :kichhoat, cols: 72, rows: 4 %>
+  </div>
+  <div class="field">
+    <%= f.label :motacongty %><br />
+    <%= f.text_area :motacongty, cols: 72, rows: 4 %>
+  </div>
+ 
+  <div class="field">
+    <%= f.label :trangweb %><br />
+    <%= f.text_field :trangweb %>
+  </div>
+ <% end %>
+ <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,44 @@
+
+
+
+
+
+
+<% content_for :title, "Tìm việc làm " %>
+
+<% content_for :description, "Tìm việc làm " %>
+<% content_for :keywords, "Tìm việc làm " %>
+
+  <center><p><h1>VIỆC LÀM MỚI NHẤT</h1></p></center>
+ <%= will_paginate @vieclams, renderer: BootstrapPagination::Rails %>
+ <style>
+   hr {
+       border-top: 1px dotted #000000 !important;
+       margin-bottom:5px !important; 
+       margin-top:5px !important;
+   }
+   .div2{
+   width: auto !important; 
+   }
+</style>
+<div class="div2">
+
+
+
+
+
+ 
+<% @vieclams.each do |vieclam|%>
+ 
+<h3><%=link_to vieclam.tencv, 'http://vieclamvanphong.com/viec-lam/'+vieclam.diadiemurl.to_s+'/'+vieclam.slug.to_s,target: :_blank %></br>
+</h3><h4><%if vieclam.idnhatuyendung=='1'%>
+<%=link_to vieclam.congty, 'http://vieclamvanphong.com/home/'+vieclam.id.to_s+'/'+vieclam.tencongtyurl.to_s,target: :_blank, style: 'color:#FF6600;'%>  <hr>
+<%else%>
+<%=link_to vieclam.congty, 'http://vieclamvanphong.com/thong-tin-nha-tuyen-dung/'+vieclam.idnhatuyendung.to_s+'/'+vieclam.tencongtyurl.to_s,target: :_blank, style: 'color:#FF6600;'%>
+  </h4>  <hr>
+  <% end %>
+
+
+<% end %>
+<%= will_paginate @vieclams, renderer: BootstrapPagination::Rails %>
+</div>
